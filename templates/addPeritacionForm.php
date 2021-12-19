@@ -64,12 +64,14 @@
                     <label for="estado" class="text-right middle">Estado</label>
                 </div>
                 <div class="small-3 cell">
-                    <select name="estado" id="estado">
+                    <select name="estadoId" id="estado">
                         <option value="">--</option>
-                        <option value="AVANCE">AVANCE</option>
-                        <option value="CERRADA">CERRADA</option>
-                        <option value="ENVIADA/INDEXADA">ENVIADA/INDEXADA</option>
-                        <option value="ENVIADA">ENVIADA</option>
+                        <?
+                            use Peritacion\Peritacion;
+                            foreach ((new Peritacion())->getAllStates() as $i => $ste) {
+                                echo "<option value=${ste['id']}>${ste['nombre']}</option>";
+                            }
+                        ?>
                     </select>
                 </div>
             </div>

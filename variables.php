@@ -2,7 +2,9 @@
 require_once(BASEDIR . "/Models/Companias.php");
 require_once(BASEDIR . "/Models/Talleres.php");
 require_once(BASEDIR . "/Models/Peritos.php");
+require_once(BASEDIR . "/Models/Peritacion.php");
 
+use Peritacion\Peritacion;
 use Companias\Companias;
 use Peritos\Peritos;
 
@@ -18,13 +20,12 @@ foreach ((new Peritos())->getPeritos() as $p) {
     $peritos[$p['id']] = $p['nombre'];
 }
 
+// Obtener los estados
+$estados = (new Peritacion())->getAllStates();
+
 // Variables js
 $variablesJs = [];
 $variablesJs['constantes'] = get_defined_constants(true)['user'];
-$variablesJs['estados_peritacion'] = [
-    STE_AVANCE, STE_CERRADA, STE_ENV_INDX, STE_ENVIADA
-];
-
 $variablesJs['companias'] = $companias;
 $variablesJs['peritos'] = $peritos;
 

@@ -90,6 +90,7 @@ $(function () {
                 data: 'f_peritacion',
                 className: "tdLeft",
                 render: function (data, type, row, meta) {
+                    if (type === 'sort') return data;
                     var fecha = data.split("-").reverse().join("-").replaceAll("-", "/")
                     return fecha;
                 }
@@ -102,6 +103,8 @@ $(function () {
                 data: 'f_cierre',
                 className: "tdLeft",
                 render: function (data, type, row, meta) {
+                    if (type === 'sort') return data;
+                    
                     if (data !== null) {
                         var fecha = data.split("-").reverse().join("-").replaceAll("-", "/")
                         return fecha;

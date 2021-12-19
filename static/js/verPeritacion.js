@@ -46,8 +46,8 @@ $("#savePeritacionForm").submit(function(e) {
     });
 });
 
-$("#verPeritacionModal #estado").change(function(){
-    if ($(this).val() == variablesJs.constantes.STE_CERRADA){
+$("#verPeritacionModal #estadoId").change(function(){
+    if ($(this).val() == '2' || $(this).val() == '3'){
         $("#verPeritacionModal #f_cierre").val(new Date().toISOString().slice(0, 10));
     }
 });
