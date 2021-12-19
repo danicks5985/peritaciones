@@ -23,6 +23,12 @@
             if ($this->mysqli->connect_error) {
                 die("Connection failed: " . $this->mysqli->connect_error);
             }
+
+            /* cambiar el conjunto de caracteres a utf8 */
+            if (!$this->mysqli->set_charset("utf8")) {
+                printf("Error cargando el conjunto de caracteres utf8: %s\n", $this->mysqli->error);
+                exit();
+            }
         }
 
         public function query($sql) {
