@@ -2,66 +2,74 @@ var dataTablePeritaciones;
 
 $(function () {
 
-    // Nombre taller
-    $("#nameTaller").autocomplete({
-        source: function (request, response) {
-            // Fetch data
-            $.ajax({
-                url: "Php/getTalleres.php",
-                type: 'post',
-                dataType: "json",
-                data: {
-                    search: request.term
-                },
-                success: function (data) {
-                    response(data);
-                }
+
+    // Autocomplete talleres
+    $.ajax({
+        url: "Php/getTalleres.php",
+        type: 'post',
+        dataType: "json",
+        success: function (data) {
+            $talleresArr = [];
+            $.each( data, function( key, value ) {
+                $talleresArr.push({ label: value.nombre, id: value.id},);
             });
-        },
-        select: function (event, ui) {
-            // Set selection
-            $('#nameTaller').val(ui.item.label); // display the selected text
-            $('#tallerId').val(ui.item.value); // save selected id to input
-            return false;
-        },
-        focus: function (event, ui) {
-            $("#nameTaller").val(ui.item.label);
-            $("#tallerId").val(ui.item.value);
-            return false;
-        },
+
+            $("#nameTaller").autocomplete({
+                autoFocus: true,
+                minLength: 3,
+                delay: 500,
+                source: $talleresArr,
+                select: function (event, ui) {
+                    // Set selection
+                    $('#nameTaller').val(ui.item.label); // display the selected text
+                    $('#tallerId').val(ui.item.id); // save selected id to input
+                    return false;
+                },
+                focus: function (event, ui) {
+                    $("#nameTaller").val(ui.item.label);
+                    $("#tallerId").val(ui.item.id);
+                    return false;
+                },
+            });
+            $('.ui-autocomplete').addClass('vertical dropdown menu autoComplEstilos');
+        }
     });
 
-    $("#nameCompania").autocomplete({
-        source: function (request, response) {
-            // Fetch data
-            $.ajax({
-                url: "Php/getCompanias.php",
-                type: 'post',
-                dataType: "json",
-                data: {
-                    search: request.term
-                },
-                success: function (data) {
-                    response(data);
-                }
+    
+    // Autocomplete companias
+    $.ajax({
+        url: "Php/getCompanias.php",
+        type: 'post',
+        dataType: "json",
+        success: function (data) {
+            companiasArr = [];
+            $.each( data, function( key, value ) {
+                companiasArr.push({ label: value.nombre, id: value.id},);
             });
-        },
-        select: function (event, ui) {
-            // Set selection
-            $('#nameCompania').val(ui.item.label); // display the selected text
-            $('#companiaId').val(ui.item.value); // save selected id to input
-            return false;
-        },
-        focus: function (event, ui) {
-            $("#nameCompania").val(ui.item.label);
-            $("#companiaId").val(ui.item.value);
-            return false;
-        },
+
+            $("#nameCompania").autocomplete({
+                autoFocus: true,
+                minLength: 1,
+                delay: 500,
+                source: companiasArr,
+                select: function (event, ui) {
+                    // Set selection
+                    $('#nameCompania').val(ui.item.label); // display the selected text
+                    $('#companiaId').val(ui.item.id); // save selected id to input
+                    return false;
+                },
+                focus: function (event, ui) {
+                    $("#nameCompania").val(ui.item.label);
+                    $("#companiaId").val(ui.item.id);
+                    return false;
+                },
+            });
+
+            $('.ui-autocomplete').addClass('vertical dropdown menu autoComplEstilos');
+        }
     });
 
-    $('.ui-autocomplete').addClass('vertical dropdown menu autoComplEstilos');
-
-
+    
     $('#tbPeritaciones thead tr')
         .clone(true)
         .addClass('filters')

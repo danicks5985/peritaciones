@@ -5,13 +5,7 @@
 
     use Companias\Companias;
 
-    if(isset($_POST['search'])){
-        $response = array();
-        $res = (new Companias())->searchCompania($_POST['search']);
-        while($row = mysqli_fetch_array($res) ){
-          $response[] = array("value"=>$row['id'],"label"=>$row['nombre']);
-        }
-        echo json_encode($response);
-    }
-
+    $companias = (new Companias())->getCompanias();
+    echo json_encode($companias);
+    
 ?>

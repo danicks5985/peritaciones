@@ -22,6 +22,8 @@ $(function() {
             $("#filtrosAvanzadosForm").css("display", "none");
         }
     }
+
+    
 });
 
 

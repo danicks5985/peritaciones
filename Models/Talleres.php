@@ -6,11 +6,19 @@
 
     class Talleres extends Db
     {
-        // Listar registros del dia actual
+        // Buscar taller
         public function searchTaller($search) {
             $sql = "SELECT * FROM talleres WHERE nombre LIKE '%".$search."%'";
             $res = $this->query($sql);
             return $res;
+        }
+
+        // Devolver lista talleres
+        public function getAll(){
+            $sql = "SELECT * FROM talleres";
+            $res = $this->query($sql);
+            $talleres = $res->fetch_all(MYSQLI_ASSOC);
+            return $talleres;
         }
     }
 
