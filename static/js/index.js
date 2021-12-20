@@ -2,7 +2,6 @@ var dataTablePeritaciones;
 
 $(function () {
 
-
     // Autocomplete talleres
     $.ajax({
         url: "Php/getTalleres.php",
@@ -14,23 +13,45 @@ $(function () {
                 $talleresArr.push({ label: value.nombre, id: value.id},);
             });
 
-            $("#nameTaller").autocomplete({
+            // Formulario crear taller
+            $("#addPeritacionForm #nameTaller").autocomplete({
                 autoFocus: true,
                 minLength: 3,
                 delay: 500,
                 source: $talleresArr,
                 select: function (event, ui) {
                     // Set selection
-                    $('#nameTaller').val(ui.item.label); // display the selected text
-                    $('#tallerId').val(ui.item.id); // save selected id to input
+                    $('#addPeritacionForm #nameTaller').val(ui.item.label); // display the selected text
+                    $('#addPeritacionForm #tallerId').val(ui.item.id); // save selected id to input
                     return false;
                 },
                 focus: function (event, ui) {
-                    $("#nameTaller").val(ui.item.label);
-                    $("#tallerId").val(ui.item.id);
+                    $("#addPeritacionForm #nameTaller").val(ui.item.label);
+                    $("#addPeritacionForm #tallerId").val(ui.item.id);
                     return false;
                 },
             });
+
+            // Formulario editar taller
+            $("#savePeritacionForm #nameTaller").autocomplete({
+                autoFocus: true,
+                minLength: 3,
+                delay: 500,
+                source: $talleresArr,
+                select: function (event, ui) {
+                    // Set selection
+                    $('#savePeritacionForm #nameTaller').val(ui.item.label); // display the selected text
+                    $('#savePeritacionForm #tallerId').val(ui.item.id); // save selected id to input
+                    return false;
+                },
+                focus: function (event, ui) {
+                    $("#savePeritacionForm #nameTaller").val(ui.item.label);
+                    $("#savePeritacionForm #tallerId").val(ui.item.id);
+                    return false;
+                },
+            });
+
+
             $('.ui-autocomplete').addClass('vertical dropdown menu autoComplEstilos');
         }
     });
@@ -47,20 +68,38 @@ $(function () {
                 companiasArr.push({ label: value.nombre, id: value.id},);
             });
 
-            $("#nameCompania").autocomplete({
+            // Formulario crear compañia
+            $("#addPeritacionForm #nameCompania").autocomplete({
                 autoFocus: true,
                 minLength: 1,
-                delay: 500,
                 source: companiasArr,
                 select: function (event, ui) {
                     // Set selection
-                    $('#nameCompania').val(ui.item.label); // display the selected text
-                    $('#companiaId').val(ui.item.id); // save selected id to input
+                    $('#addPeritacionForm #nameCompania').val(ui.item.label); // display the selected text
+                    $('#addPeritacionForm #companiaId').val(ui.item.id); // save selected id to input
                     return false;
                 },
                 focus: function (event, ui) {
-                    $("#nameCompania").val(ui.item.label);
-                    $("#companiaId").val(ui.item.id);
+                    $("#addPeritacionForm #nameCompania").val(ui.item.label);
+                    $("#addPeritacionForm #companiaId").val(ui.item.id);
+                    return false;
+                },
+            });
+
+            // Formulario editar compañia
+            $("#savePeritacionForm #nameCompania").autocomplete({
+                autoFocus: true,
+                minLength: 1,
+                source: companiasArr,
+                select: function (event, ui) {
+                    // Set selection
+                    $('#savePeritacionForm #nameCompania').val(ui.item.label); // display the selected text
+                    $('#savePeritacionForm #companiaId').val(ui.item.id); // save selected id to input
+                    return false;
+                },
+                focus: function (event, ui) {
+                    $("#savePeritacionForm #nameCompania").val(ui.item.label);
+                    $("#savePeritacionForm #companiaId").val(ui.item.id);
                     return false;
                 },
             });
@@ -80,17 +119,20 @@ $(function () {
         autoWidth: false,
         orderCellsTop: true,
         fixedHeader: true,
+        stateSave: true,
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json'
         },
         buttons: [
-            'copy', 'excel', 'pdf', 'print'
+            'colvis', 'copy', 'excel', 'pdf', 'print'
         ],
         ajax: {
             url: "Php/getPeritaciones.php",
         },
         rowId: 'id',
+        order: [[0, "desc"]],
         columns: [
+            { name: 'id', data: 'id', className: "tdRight" },
             { name: 'nombre_taller', data: 'nombre_taller', className: "tdLeft" },
             { name: 'matricula', data: 'matricula', className: "tdLeft" },
             {
@@ -125,14 +167,17 @@ $(function () {
             { name: 'kms', data: 'kms', className: "tdRight" },
             { name: 'importe_kms', data: 'importe_kms', className: "tdRight" },
             { name: 'total_peritacion', data: 'total_peritacion', className: "tdRight" },
+            { name: 'create_at', data: 'create_at', className: "tdLeft" },
+            { name: 'update_at', data: 'update_at', className: "tdLeft" },
             {
                 name: 'acciones',
                 data: 'acciones',
                 className: "tdCenter",
                 render: function (data, type, row, meta) {
-                    return "<button class='button tiny success btnVer'><i class='fas fa-eye'></i> Ver</button>";
+                    return `<button class='button tiny success btnAction btnVerPeritacion'><i class='fas fa-eye'></i> Ver</button>
+                            <button class='button tiny alert btnAction btnDelPeritacion'><i class='fas fa-trash'></i> Eliminar</button>`;
                 }
-            }
+            },
         ],
         footerCallback: function (row, data, start, end, display) {
             var api = this.api(), data;
@@ -234,8 +279,12 @@ $(function () {
     });
 
 
-    $(document).on("click", ".btnVer", function(event){
+    $(document).on("click", ".btnVerPeritacion", function(event){
         showPeritacion(this);
+    });
+
+    $(document).on("click", ".btnDelPeritacion", function(event){
+        deletePeritacion(this);
     });
 
     $(document).on({
@@ -245,7 +294,7 @@ $(function () {
         mouseleave: function () {
             //stuff to do on mouse leave
         }
-    }, ".btnVer"); //pass the element as an argument to .on
+    }, ".btnVerPeritacion"); //pass the element as an argument to .on
 
     $(document).foundation();
 });

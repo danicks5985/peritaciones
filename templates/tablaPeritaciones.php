@@ -8,6 +8,7 @@
         <table id="tbPeritaciones" class="hover">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Taller</th>
                     <th>Matrícula</th>
                     <th>F. Peritación</th>
@@ -19,11 +20,16 @@
                     <th class="text-right">Kms</th>
                     <th class="text-right">Importe kms</th>
                     <th class="text-right">Total</th>
+                    <th>Create at</th>
+                    <th>Update at</th>
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tfoot align="right">
                 <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

@@ -10,7 +10,7 @@
                     <label for="nameTaller" class="text-right middle">Taller</label>
                 </div>
                 <div class="small-3 cell">
-                    <input id="nameTaller" type="text" autocomplete="off">
+                    <input id="nameTaller" type="text" autocomplete="off" required>
                     <input id="tallerId" name="tallerId" type="hidden">
                 </div>
 
@@ -19,7 +19,7 @@
                     <label for="matricula" class="text-right middle">Matrícula</label>
                 </div>
                 <div class="small-2 cell">
-                    <input id="matricula" name="matricula" type="text" autocomplete="off">
+                    <input id="matricula" name="matricula" type="text" autocomplete="off" required>
                 </div>
 
                 <!-- Fecha peritación -->
@@ -27,7 +27,7 @@
                     <label for="f_peritacion" class="text-right middle">Fecha Peritación</label>
                 </div>
                 <div class="small-3 cell">
-                    <input id="f_peritacion" name="f_peritacion" type="date" value="<?= date("Y-m-d"); ?>">
+                    <input id="f_peritacion" name="f_peritacion" type="date" value="<?= date("Y-m-d"); ?>" required>
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                     <label for="nameCompania" class="text-right middle">Compañía</label>
                 </div>
                 <div class="small-3 cell">
-                    <input id="nameCompania" type="text" autocomplete="off">
+                    <input id="nameCompania" type="text" autocomplete="off" required>
                     <input id="companiaId" name="companiaId" type="hidden">
                 </div>
 
@@ -46,7 +46,7 @@
                     <label for="perito" class="text-right middle">Perito</label>
                 </div>
                 <div class="small-2 cell">
-                    <select name="peritoId" id="perito">
+                    <select name="peritoId" id="perito" required>
                         <option value="">--</option>
                         <?
                             use Peritos\Peritos;
@@ -64,7 +64,7 @@
                     <label for="estado" class="text-right middle">Estado</label>
                 </div>
                 <div class="small-3 cell">
-                    <select name="estadoId" id="estado">
+                    <select name="estadoId" id="estado" required>
                         <option value="">--</option>
                         <?
                             use Peritacion\Peritacion;
@@ -73,25 +73,6 @@
                             }
                         ?>
                     </select>
-                </div>
-            </div>
-
-            <div class="grid-x grid-padding-x">
-                <!-- kms -->
-                <div class="small-1 cell">
-                    <label for="kms" class="text-right middle">Kms</label>
-                </div>
-                <div class="small-3 cell">
-                    <input type="number" name="kms">
-                </div>
-
-                <!-- comentarios -->
-                <div class="small-1 cell">
-                    <label for="comentarios" class="text-right middle">Comentarios</label>
-                </div>
-                <div class="small-7 cell">
-                    <textarea name="comentarios" id="comentarios" rows="2"></textarea>
-
                 </div>
             </div>
 

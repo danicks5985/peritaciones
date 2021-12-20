@@ -63,6 +63,8 @@
     <script src="/peritaciones/static/libs/foundation-datepicker/js/locales/foundation-datepicker.es.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/themes@5.0.8/dark/dark.min.css">
 
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -74,6 +76,7 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.foundation.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.colVis.min.js"></script>
     <script>
         var variablesJs = JSON.parse('<?= addslashes(json_encode($variablesJs)); ?>');
     </script>
@@ -81,6 +84,7 @@
     <script src="/peritaciones/static/js/index.js"></script>
     <script src="/peritaciones/static/js/setConfig.js"></script>
     <script src="/peritaciones/static/js/filtrosAvanzados.js"></script>
+    <script src="/peritaciones/static/js/addPeritacion.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,81 @@
                 <fieldset class="cell text-center callout" style="margin-top: 25px;">
                     <legend><strong><i class="far fa-edit"></i> Modificar peritación</strong></legend>
 
+
+                    <div class="grid-x grid-padding-x">
+                        <!-- taller -->
+                        <div class="small-2 cell">
+                            <label for="nameTaller" class="text-right middle">Taller</label>
+                        </div>
+                        <div class="small-3 cell">
+                            <input id="nameTaller" type="text" autocomplete="off" required>
+                            <input id="tallerId" name="tallerId" type="hidden">
+                        </div>
+
+                        <!-- matricula -->
+                        <div class="small-1 cell">
+                            <label for="matricula" class="text-right middle">Matrícula</label>
+                        </div>
+                        <div class="small-3 cell">
+                            <input id="matricula" name="matricula" type="text" autocomplete="off" required>
+                        </div>
+
+                        <!-- Fecha peritación -->
+                        <div class="small-1 cell">
+                            <label for="f_peritacion" class="text-right middle">Fecha Peritación</label>
+                        </div>
+                        <div class="small-2 cell">
+                            <input id="f_peritacion" name="f_peritacion" type="date" value="<?= date("Y-m-d"); ?>" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-x grid-padding-x">
+                        <!-- Compañía -->
+                        <div class="small-2 cell">
+                            <label for="nameCompania" class="text-right middle">Compañía</label>
+                        </div>
+                        <div class="small-3 cell">
+                            <input id="nameCompania" type="text" autocomplete="off" required>
+                            <input id="companiaId" name="companiaId" type="hidden">
+                        </div>
+
+                        <!-- Perito -->
+                        <div class="small-1 cell">
+                            <label for="perito" class="text-right middle">Perito</label>
+                        </div>
+                        <div class="small-3 cell">
+                            <select name="peritoId" id="perito" required>
+                                <option value="">--</option>
+                                <?
+
+                                use Peritos\Peritos;
+
+                                foreach ((new Peritos())->getPeritos() as $comp) {
+                                    $id = $comp['id'];
+                                    $name = $comp['nombre'];
+                                    echo "<option value=$id>$name</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="small-1 cell">
+                            <label for="estadoId" class="text-right middle">Estado</label>
+                        </div>
+                        <div class="small-2 cell">
+                            <select name="estadoId" id="estadoId" required>
+                                <option value="">--</option>
+                                <?
+                                    use Peritacion\Peritacion;
+                                    foreach ((new Peritacion())->getAllStates() as $i => $ste) {
+                                        echo "<option value=${ste['id']}>${ste['nombre']}</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="grid-x grid-padding-x">
                         <!-- Fecha cierre -->
                         <div class="small-2 cell">
@@ -16,38 +91,19 @@
                             <input id="f_cierre" name="f_cierre" type="date" value="">
                         </div>
 
-                        <!-- Estado -->
-                        <div class="small-1 cell">
-                            <label for="estadoId" class="text-right middle">Estado</label>
-                        </div>
-                        <div class="small-3 cell">
-                            <select name="estadoId" id="estadoId">
-                                <option value="">--</option>
-                                <?
-                                    use Peritacion\Peritacion;
-
-                                    foreach ((new Peritacion())->getAllStates() as $i => $ste) {
-                                        echo "<option value=${ste['id']}>${ste['nombre']}</option>";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-
                         <!-- kms -->
                         <div class="small-1 cell">
                             <label for="kms" class="text-right middle">Kms</label>
                         </div>
-                        <div class="small-2 cell">
+                        <div class="small-3 cell">
                             <input type="number" id="kms" name="kms">
                         </div>
-                    </div>
 
-                    <div class="grid-x grid-padding-x">
                         <!-- Total peritación -->
-                        <div class="small-2 cell">
+                        <div class="small-1 cell">
                             <label for="total" class="text-right middle">Total</label>
                         </div>
-                        <div class="small-3 cell">
+                        <div class="small-2 cell">
                             <input type="text" name="total" id="total">
                         </div>
                     </div>

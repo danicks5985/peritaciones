@@ -11,10 +11,15 @@
 .autoComplEstilos {
     background: rgb(243, 236, 236);
     width: max-content;
+    z-index: 3000;
 }
 
 .autoComplEstilos li:hover { 
     cursor: pointer;
+    background: darkgray;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-state-active.ui-button:hover {
     background: darkgray;
 }
 
@@ -47,7 +52,7 @@
     margin-bottom: 10px !important;
 }
 
-.btnVer {
+.btnAction {
     padding: 3px;
     margin: 0px;
     border-radius: 5px;
