@@ -77,7 +77,7 @@
             </div>
 
             <div class="cell">
-                <button type="submit" class="button" name="grabar_peritacion"><i class="fas fa-plus"></i> Añadir peritacion</button>
+                <button type="submit" class="button tiny" id="btGrabar" name="grabar_peritacion"><i class="fas fa-plus"></i> Añadir peritacion</button>
             </div>
         </fieldset>
     </div>

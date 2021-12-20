@@ -62,13 +62,28 @@
     background: #cfe7d857;
 }
 
-/* #addPeritacionForm input {
+#addPeritacionForm input,
+#addPeritacionForm select {
     height: 25px;
 }
 
 #addPeritacionForm label {
     height: 25px;
-} */
+    margin: 0px;
+    line-height: 2;
+    padding: 0px;
+}
+
+#addPeritacionForm #btGrabar {
+    margin: 0px;
+}
+
+
+#filtrosAvanzadosForm input[type='date']{
+    height: 25px;
+    margin: 0px;
+}
+
 
 #filtrosAvanzadosForm fieldset {
     background: #cfcfe721;

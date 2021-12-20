@@ -5,7 +5,7 @@
             <legend><strong><i class="fas fa-search"></i> Filtros avanzados</strong></legend>
 
             <div class="grid-x grid-padding-x">
-                <div class="cell">
+                <div class="cell small-8">
                     <!-- filtro compañías -->
                     <div class="grid-x grid-margin-x grid-padding-x">
                         <fieldset class="cell text-center callout">
@@ -22,7 +22,7 @@
                                 foreach ($companias as $comp) {
                                     $id = $comp['id'];
                                     $name = $comp['nombre'];
-                                    echo "<div class='small-3 cell'>
+                                    echo "<div class='small-5 medium-6 large-3 cell'>
                                                         <div class='grid-x'>
                                                         <div class='small-9 cell text-right'>
                                                             <label for='ckeckCompany{$id}Filter' style='margin-right: 5px;'>$name</label>
@@ -49,7 +49,7 @@
                 </div>
 
 
-                <div class="cell">
+                <div class="cell small-4">
                     <!-- filtro peritos -->
                     <div class="grid-x grid-margin-x grid-padding-x">
                         <fieldset class="cell text-center callout">
@@ -66,7 +66,7 @@
                                 foreach ($peritos as $comp) {
                                     $id = $comp['id'];
                                     $name = $comp['nombre'];
-                                    echo "<div class='small-3 cell'>
+                                    echo "<div class='small-5 cell'>
                                                         <div class='grid-x'>
                                                         <div class='small-9 cell text-right'>
                                                             <label for='ckeckPerito{$id}Filter' style='margin-right: 5px;'>$name</label>
