@@ -127,6 +127,7 @@ $(function () {
         orderCellsTop: true,
         fixedHeader: true,
         stateSave: true,
+        pageLength: 100,
         lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todo"]],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json'
@@ -141,7 +142,10 @@ $(function () {
             {
                 extend:    'excelHtml5',
                 text:      '<i class="far fa-file-excel"></i> Excel',
-                titleAttr: 'Excel'
+                titleAttr: 'Excel',
+                exportOptions: {
+                    columns: columns_export
+                }
             }, 
             {
                 extend:    'print',
@@ -187,7 +191,6 @@ $(function () {
                         var column = this;
                         column
                                 .search( '' );
-                                //.draw();
                     } );
             
                     dt.search('').draw();
@@ -203,7 +206,7 @@ $(function () {
         rowId: 'id',
         order: [[0, "desc"]],
         columns: [
-            { name: 'id', data: 'id', className: "tdRight" },
+            { name: 'id', data: 'id', className: "tdRight", visible: false },
             { name: 'nombre_taller', data: 'nombre_taller', className: "tdLeft" },
             { name: 'matricula', data: 'matricula', className: "tdLeft" },
             {
@@ -238,8 +241,8 @@ $(function () {
             { name: 'kms', data: 'kms', className: "tdRight" },
             { name: 'importe_kms', data: 'importe_kms', className: "tdRight" },
             { name: 'total_peritacion', data: 'total_peritacion', className: "tdRight" },
-            { name: 'create_at', data: 'create_at', className: "tdLeft" },
-            { name: 'update_at', data: 'update_at', className: "tdLeft" },
+            { name: 'create_at', data: 'create_at', className: "tdLeft", visible: false },
+            { name: 'update_at', data: 'update_at', className: "tdLeft", visible: false },
             {
                 name: 'acciones',
                 data: 'acciones',
