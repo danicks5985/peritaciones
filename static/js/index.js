@@ -1,4 +1,5 @@
 var dataTablePeritaciones;
+var searchColumnsValues = {};
 
 $(function () {
 
@@ -114,17 +115,85 @@ $(function () {
         .addClass('filters')
         .appendTo('#tbPeritaciones thead');
 
+    var columns_export = [ 
+        'nombre_taller:name', 'matricula:name', 'f_peritacion:name',
+        'nombre_compania:name', 'nombre_perito:name', 'estado:name',
+        'total_peritacion:name'
+    ]
+
     dataTablePeritaciones = $('#tbPeritaciones').DataTable({
         dom: 'Blfrtip',
         autoWidth: false,
         orderCellsTop: true,
         fixedHeader: true,
         stateSave: true,
+        lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todo"]],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json'
         },
         buttons: [
-            'colvis', 'copy', 'excel', 'pdf', 'print'
+            'colvis',
+            {
+                extend:    'copyHtml5',
+                text:      '<i class="far fa-copy"></i> Copiar',
+                titleAttr: 'Copiar'
+            }, 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="far fa-file-excel"></i> Excel',
+                titleAttr: 'Excel'
+            }, 
+            {
+                extend:    'print',
+                text:      '<i class="fas fa-print"></i> Imprimir',
+                titleAttr: 'Imprimir',
+                exportOptions: {
+                    columns: columns_export
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="far fa-file-pdf"></i> PDF',
+                title: 'Listado peritaciones',
+                /* customize: function(doc) {
+                    doc.styles.title = {
+                        color: 'red',
+                        fontSize: '40',
+                        background: 'blue',
+                        alignment: 'center'
+                    }   
+                },  */ 
+                /* messageTop: function(){
+                    return "Listado peritaciones";
+                }, */
+                footer: true,
+                exportOptions: {
+                    columns: columns_export
+                }
+            }, 
+            {
+                text: '<i class="far fa-trash-alt"></i> Resetear filtros',
+                className:'button alert btnResetHeaders',
+                header: true,
+                action: function ( e, dt, node, config ) {
+            
+            
+                    $("input[type='text']").each(function () { 
+                        $(this).val(''); 
+                    })
+            
+                    dt.columns().every( function () {
+                        var column = this;
+                        column
+                                .search( '' );
+                                //.draw();
+                    } );
+            
+                    dt.search('').draw();
+            
+                }
+            }
+            
         ],
         ajax: {
             url: "Php/getPeritaciones.php",
@@ -192,18 +261,18 @@ $(function () {
 
             // computing column Total of the complete result 
             var Total = api
-                .column(10, { page: 'current' })
+                .column('total_peritacion:name', { page: 'current' })
                 .data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0);
 
             // Update footer by showing the total with the reference of the column index 
-            $(api.column(9).footer()).html('Total');
-            $(api.column(10).footer()).html(Total);
+            $(api.column('importe_kms:name').footer()).html('Total');
+            $(api.column('total_peritacion:name').footer()).html(Total);
         },
         drawCallback: function (settings) {
-            
+
         },
         initComplete: function () {
             var api = this.api();

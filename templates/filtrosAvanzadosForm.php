@@ -14,32 +14,32 @@
 
                                 <?
 
-                                use Companias\Companias;
+                                    use Companias\Companias;
 
-                                $companias = (new Companias())->getCompanias();
-                                $comp_name = array_column($companias, 'nombre');
-                                array_multisort($comp_name, SORT_ASC, $companias);
-                                foreach ($companias as $comp) {
-                                    $id = $comp['id'];
-                                    $name = $comp['nombre'];
-                                    echo "<div class='small-5 medium-6 large-3 cell'>
-                                                        <div class='grid-x'>
-                                                        <div class='small-9 cell text-right'>
-                                                            <label for='ckeckCompany{$id}Filter' style='margin-right: 5px;'>$name</label>
-                                                        </div>
-                                                        <div class='small-3 cell text-left'>
-                                                            <div class='switch tiny'>
-                                                                <input class='switch-input filterCheck' id='ckeckCompany{$id}Filter' type='checkbox' name='checkCompania_$id'>
-                                                                <label class='switch-paddle' for='ckeckCompany{$id}Filter'>
-                                                                    <span class='show-for-sr'>$name activo</span>
-                                                                    <span class='switch-active' aria-hidden='true'>SI</span>
-                                                                    <span class='switch-inactive' aria-hidden='true'>NO</span>
-                                                                </label>
+                                    $companias = (new Companias())->getCompanias();
+                                    $comp_name = array_column($companias, 'nombre');
+                                    array_multisort($comp_name, SORT_ASC, $companias);
+                                    foreach ($companias as $comp) {
+                                        $id = $comp['id'];
+                                        $name = $comp['nombre'];
+                                        echo "<div class='small-5 medium-6 large-3 cell'>
+                                                            <div class='grid-x'>
+                                                            <div class='small-9 cell text-right'>
+                                                                <label for='ckeckCompany{$id}Filter' style='margin-right: 5px;'>$name</label>
+                                                            </div>
+                                                            <div class='small-3 cell text-left'>
+                                                                <div class='switch tiny'>
+                                                                    <input class='switch-input filterCheck' id='ckeckCompany{$id}Filter' type='checkbox' name='checkCompania_$id'>
+                                                                    <label class='switch-paddle' for='ckeckCompany{$id}Filter'>
+                                                                        <span class='show-for-sr'>$name activo</span>
+                                                                        <span class='switch-active' aria-hidden='true'>SI</span>
+                                                                        <span class='switch-inactive' aria-hidden='true'>NO</span>
+                                                                    </label>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>";
-                                }
+                                                    </div>";
+                                    }
 
                                 ?>
 
