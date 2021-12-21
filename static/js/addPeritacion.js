@@ -18,4 +18,6 @@ $("#addPeritacionForm").submit(function(e) {
             }
         }
     });
+
+    $("#nameTaller").focus();
 });
