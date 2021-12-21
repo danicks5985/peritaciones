@@ -177,7 +177,8 @@ $(function () {
                 header: true,
                 action: function ( e, dt, node, config ) {
             
-            
+                    $("#resetFilter").trigger("click");
+
                     $("input[type='text']").each(function () { 
                         $(this).val(''); 
                     })
@@ -190,6 +191,7 @@ $(function () {
                     } );
             
                     dt.search('').draw();
+
             
                 }
             }
