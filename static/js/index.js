@@ -19,7 +19,17 @@ $(function () {
                 autoFocus: true,
                 minLength: 3,
                 delay: 500,
-                source: $talleresArr,
+                source: function(request, response) {
+                    var filteredArray = $.map($talleresArr, function(item) {
+                        if( item.label.toUpperCase().startsWith(request.term.toUpperCase())){
+                            return item;
+                        }
+                        else{
+                            return null;
+                        }
+                    });
+                    response(filteredArray);
+                },
                 select: function (event, ui) {
                     // Set selection
                     $('#addPeritacionForm #nameTaller').val(ui.item.label); // display the selected text
@@ -38,7 +48,17 @@ $(function () {
                 autoFocus: true,
                 minLength: 3,
                 delay: 500,
-                source: $talleresArr,
+                source: function(request, response) {
+                    var filteredArray = $.map($talleresArr, function(item) {
+                        if( item.label.toUpperCase().startsWith(request.term.toUpperCase())){
+                            return item;
+                        }
+                        else{
+                            return null;
+                        }
+                    });
+                    response(filteredArray);
+                },
                 select: function (event, ui) {
                     // Set selection
                     $('#savePeritacionForm #nameTaller').val(ui.item.label); // display the selected text
@@ -73,7 +93,17 @@ $(function () {
             $("#addPeritacionForm #nameCompania").autocomplete({
                 autoFocus: true,
                 minLength: 1,
-                source: companiasArr,
+                source: function(request, response) {
+                    var filteredArray = $.map(companiasArr, function(item) {
+                        if( item.label.toUpperCase().startsWith(request.term.toUpperCase())){
+                            return item;
+                        }
+                        else{
+                            return null;
+                        }
+                    });
+                    response(filteredArray);
+                },
                 select: function (event, ui) {
                     // Set selection
                     $('#addPeritacionForm #nameCompania').val(ui.item.label); // display the selected text
@@ -91,7 +121,17 @@ $(function () {
             $("#savePeritacionForm #nameCompania").autocomplete({
                 autoFocus: true,
                 minLength: 1,
-                source: companiasArr,
+                source: function(request, response) {
+                    var filteredArray = $.map(companiasArr, function(item) {
+                        if( item.label.toUpperCase().startsWith(request.term.toUpperCase())){
+                            return item;
+                        }
+                        else{
+                            return null;
+                        }
+                    });
+                    response(filteredArray);
+                },
                 select: function (event, ui) {
                     // Set selection
                     $('#savePeritacionForm #nameCompania').val(ui.item.label); // display the selected text
