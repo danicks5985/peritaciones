@@ -15,6 +15,7 @@ $("#addPeritacionForm").submit(function(e) {
             if (res.ok){
                 $('#tbPeritaciones').DataTable().ajax.reload();
                 $('#addPeritacionForm').trigger("reset");
+                $("input[type='hidden']").val("");
             }
         }
     });

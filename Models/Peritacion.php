@@ -35,7 +35,7 @@
         // Editar peritación
         public function editPeritacion($form){
             $id = $form['id'];
-            $tallerId = strtoupper($form['tallerId']);
+            $tallerId = $form['tallerId'];
             $matr = strtoupper($form['matricula']);
             $f_perit = $form['f_peritacion'];
             $compan = strtoupper($form['companiaId']);
@@ -48,8 +48,11 @@
 
             $impte_kms = IMPTE_KMS;
             $f_cierre = ($f_cierre == '0000-00-00' || $f_cierre == '') ? 'NULL' : "'$f_cierre'";
+
+            $localidad = $this->getLocalidad($tallerId);
+
             $sql = "UPDATE peritaciones 
-                    SET taller_id=$tallerId,matricula='$matr',f_peritacion='$f_perit',compania_id=$compan,
+                    SET taller_id=$tallerId,matricula='$matr',f_peritacion='$f_perit',compania_id=$compan,localidad='$localidad',
                     perito_id=$perId,f_cierre=$f_cierre,estado_id=$estadoId,kms=$kms,total_peritacion=$total,
                     importe_kms=$impte_kms*$kms,comentarios=UPPER('$comentarios')
                     WHERE id=$id";
