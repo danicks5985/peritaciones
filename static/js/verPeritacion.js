@@ -10,6 +10,7 @@ function showPeritacion(button){
         var $nameTaller = $("#verPeritacionModal #nameTaller");
         var $tallerId = $("#verPeritacionModal #tallerId");
         var $matricula = $("#verPeritacionModal #matricula");
+        var $f_peritacion = $("#verPeritacionModal #f_peritacion");
         var $f_cierre = $("#verPeritacionModal #f_cierre");
         var $nameCompania = $("#verPeritacionModal #nameCompania");
         var $companiaId = $("#verPeritacionModal #companiaId");
@@ -23,6 +24,7 @@ function showPeritacion(button){
         $nameTaller.val(data.nombre_taller);
         $tallerId.val(data.taller_id);
         $matricula.val(data.matricula);
+        $f_peritacion.val(data.f_peritacion);
         $f_cierre.val(data.f_cierre);
         $nameCompania.val(data.nombre_compania);
         $companiaId.val(data.compania_id);
