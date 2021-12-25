@@ -60,6 +60,9 @@
 
 #addPeritacionForm fieldset {
     background: #cfe7d857;
+    box-shadow: 0 1px 3px 1px rgb(0 0 0 / 20%);
+    border-left: 3px solid green;
+    border-bottom: 3px solid green;
 }
 
 #addPeritacionForm input,
@@ -87,6 +90,12 @@
 
 #filtrosAvanzadosForm fieldset {
     background: #cfcfe721;
+    box-shadow: 0 1px 3px 1px rgb(0 0 0 / 20%);
+}
+
+#filtrosAvanzadosForm  .fieldset1 {
+    border-left: 3px solid #7979bc;
+    border-bottom: 3px solid #7979bc;
 }
 
 .btnResetHeaders{

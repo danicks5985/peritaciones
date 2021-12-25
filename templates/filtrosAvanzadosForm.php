@@ -1,7 +1,7 @@
 <form id="filtrosAvanzadosForm" style="display: none;">
 
     <div class="grid-x grid-margin-x grid-padding-x">
-        <fieldset class="cell text-center callout">
+        <fieldset class="cell text-center callout fieldset1">
             <legend><strong><i class="fas fa-search"></i> Filtros avanzados</strong></legend>
 
             <div class="grid-x grid-padding-x">
