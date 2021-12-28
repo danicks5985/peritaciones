@@ -310,7 +310,7 @@ $(function () {
                 $(row).find(`td:eq(${estado_id_col})`).addClass('abierta_cell');
             }
 
-            if( data['estado_id'] == '7' || data['estado_id'] == '9'){
+            if( data['estado_id'] == '7' || data['estado_id'] == '8' || data['estado_id'] == '9'){
                 $(row).find(`td:eq(${estado_id_col})`).addClass('pdte_cell');
             }
 
