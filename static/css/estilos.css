@@ -102,3 +102,38 @@
     margin-left: 20px !important;
 }
 
+.perito_kike_row {
+    background: #ff00bc1f !important;
+}
+
+.perito_edu_row {
+    background: #0000ff29 !important;
+}
+
+.perito_teles_row {
+    background: #eef12729 !important;
+}
+
+.perito_alicia_row {
+    background: #f1a02752 !important;
+}
+
+/* ABIERTA Y CAMBIO FECHA */
+.abierta_cell {
+    color: #f604a0;
+    font-weight: bold;
+}
+
+.avance_cell {
+    color: blue;
+    font-weight: bold;
+}
+
+/* PTE PERITO y ST PTE RESTOS */
+.pdte_cell {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+
+

@@ -28,17 +28,4 @@
             </label>
         </div>
     </div>
-
-    <!-- Mostrar leyenda -->
-    <div class="small-3 cell" style="display: flex;">
-        <label for="ckeckShowLeyend" style="margin-right: 5px;"><strong>Mostrar leyenda</strong></label>
-        <div class="switch tiny">
-            <input class="switch-input" id="ckeckShowLeyend" type="checkbox">
-            <label class="switch-paddle" for="ckeckShowLeyend">
-                <span class="show-for-sr">Filtros activo</span>
-                <span class="switch-active" aria-hidden="true">SI</span>
-                <span class="switch-inactive" aria-hidden="true">NO</span>
-            </label>
-        </div>
-    </div>
 </div>

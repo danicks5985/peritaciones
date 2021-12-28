@@ -5,7 +5,7 @@
         <?= strftime("%A %d de %B del %Y"); ?>
     </div>
     <div class="cell text-center" style="margin-top: 20px;">
-        <table id="tbPeritaciones" class="hover">
+        <table id="tbPeritaciones">
             <thead>
                 <tr>
                     <th>Id</th>

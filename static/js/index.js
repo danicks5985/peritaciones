@@ -293,6 +293,28 @@ $(function () {
                 }
             },
         ],
+        createdRow: function( row, data, dataIndex){
+            var api = this.api();
+            var estado_id_col = api.column('estado:name').index() - 1;
+            
+            if( data['perito_id'] == '1') $(row).addClass('perito_kike_row');
+            if( data['perito_id'] == '2') $(row).addClass('perito_edu_row');
+            if( data['perito_id'] == '3') $(row).addClass('perito_alicia_row');
+            if( data['perito_id'] == '4') $(row).addClass('perito_teles_row');
+
+            if( data['estado_id'] == '1'){
+                $(row).find(`td:eq(${estado_id_col})`).addClass('avance_cell');
+            }
+
+            if( data['estado_id'] == '5' || data['estado_id'] == '10'){
+                $(row).find(`td:eq(${estado_id_col})`).addClass('abierta_cell');
+            }
+
+            if( data['estado_id'] == '7' || data['estado_id'] == '9'){
+                $(row).find(`td:eq(${estado_id_col})`).addClass('pdte_cell');
+            }
+
+        },
         footerCallback: function (row, data, start, end, display) {
             var api = this.api(), data;
 
