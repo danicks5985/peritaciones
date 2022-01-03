@@ -3,7 +3,20 @@
     <form id="savePeritacionForm" action="Php/editPeritacion.php" method="post">
         <input type="hidden" name="id" id="id" value="">
         <div class="grid-container fluid">
-            <div class="grid-x grid-margin-x grid-padding-x">
+            <div class="grid-x  grid-padding-x">
+                <div class="cell small-2 text-right">
+                    <label>MANO OBRA: </label>
+                </div>
+                <div class="cell small-4">
+                    <label class="manoObra_cell">XXXX</label>
+                </div>
+                <div class="cell small-2 text-center concesionario_cell">
+                    <label style="background: #b7d8b7;">CONCESIONARIO</label>
+                </div>
+                <div class="cell small-2 text-center concertado_cell">
+                    <label style="background: #f1a02752;">CONCERTADO</label>
+                </div>
+                
                 <fieldset class="cell text-center callout" style="margin-top: 25px;">
                     <legend><strong><i class="far fa-edit"></i> Modificar peritación</strong></legend>
 

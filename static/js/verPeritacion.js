@@ -2,6 +2,10 @@ var $modal = $('#verPeritacionModal');
 
 function showPeritacion(button){
     var id = $(button).parents("tr").attr("id");
+
+    $("#verPeritacionModal .concesionario_cell").css("display", "none");
+    $("#verPeritacionModal .concertado_cell").css("display", "none");
+
     $.ajax('../../peritaciones/Php/getPeritacion.php?id=' + id)
     .done(function(resp){
         var data = JSON.parse(resp).data;
@@ -34,7 +38,24 @@ function showPeritacion(button){
         $total.val(data.total_peritacion);
         $comentarios.val(data.comentarios);
         
-        $modal.foundation('open');
+        $.ajax({
+            method: "POST",
+            url: "../../peritaciones/Php/getManoObra.php",
+            data: { taller_id: data.taller_id, compania_id: data.compania_id }
+        })
+        .done(function( resp ) {
+            var data = JSON.parse(resp).data;
+            if (data != null){
+                $("#verPeritacionModal .manoObra_cell").html(data.mano_obra);
+                if (data.concesionario == "1"){
+                    $("#verPeritacionModal .concesionario_cell").css("display", "block");
+                }
+                if (data.concertado == "1"){
+                    $("#verPeritacionModal .concertado_cell").css("display", "none");
+                }
+            }
+            $modal.foundation('open');
+        });
     });
 }
 
