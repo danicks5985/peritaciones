@@ -46,12 +46,13 @@ function showPeritacion(button){
         .done(function( resp ) {
             var data = JSON.parse(resp).data;
             if (data != null){
-                $("#verPeritacionModal .manoObra_cell").html(data.mano_obra);
+                console.log(data);
+                $("#verPeritacionModal .manoObra_cell").text(data.mano_obra);
                 if (data.concesionario == "1"){
                     $("#verPeritacionModal .concesionario_cell").css("display", "block");
                 }
                 if (data.concertado == "1"){
-                    $("#verPeritacionModal .concertado_cell").css("display", "none");
+                    $("#verPeritacionModal .concertado_cell").css("display", "block");
                 }
             }
             $modal.foundation('open');

@@ -5,10 +5,10 @@
         <div class="grid-container fluid">
             <div class="grid-x  grid-padding-x">
                 <div class="cell small-2 text-right">
-                    <label>MANO OBRA: </label>
+                    <label style="font-weight: bold;">MANO OBRA: </label>
                 </div>
                 <div class="cell small-4">
-                    <label class="manoObra_cell">XXXX</label>
+                    <label class="manoObra_cell"></label>
                 </div>
                 <div class="cell small-2 text-center concesionario_cell">
                     <label style="background: #b7d8b7;">CONCESIONARIO</label>
