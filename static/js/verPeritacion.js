@@ -3,6 +3,7 @@ var $modal = $('#verPeritacionModal');
 function showPeritacion(button){
     var id = $(button).parents("tr").attr("id");
 
+    $("#verPeritacionModal .manoObra_cell").text("");
     $("#verPeritacionModal .concesionario_cell").css("display", "none");
     $("#verPeritacionModal .concertado_cell").css("display", "none");
 
@@ -54,6 +55,8 @@ function showPeritacion(button){
                 if (data.concertado == "1"){
                     $("#verPeritacionModal .concertado_cell").css("display", "block");
                 }
+            }else {
+                $("#verPeritacionModal .manoObra_cell").text("SIN DATOS DE MANO DE OBRA EN LA BASE DE DATOS !!!!");
             }
             $modal.foundation('open');
         });
