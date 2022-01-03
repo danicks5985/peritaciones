@@ -11,7 +11,6 @@
         public function savePeritacion($peritacion) {
             $taller = strtoupper($peritacion['tallerId']);
             $matr = strtoupper($peritacion['matricula']);
-            $f_perit = $peritacion['f_peritacion'];
             $compan = strtoupper($peritacion['companiaId']);
             $per = strtoupper($peritacion['peritoId']);
             $estadoId = $peritacion['estadoId'];
@@ -26,7 +25,7 @@
 
             $sql = "INSERT INTO peritaciones (taller_id,matricula,f_peritacion,compania_id,perito_id,
                     estado_id,f_cierre,localidad,total_peritacion) 
-                    VALUES ($taller,'$matr','$f_perit',$compan,$per,$estadoId,$f_cier,
+                    VALUES ($taller,'$matr',DATE(NOW()),$compan,$per,$estadoId,$f_cier,
                     '$local',$tot_perit)";
             $res = $this->query($sql);
             return $res;

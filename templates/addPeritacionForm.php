@@ -22,12 +22,20 @@
                     <input id="matricula" name="matricula" type="text" autocomplete="off" required>
                 </div>
 
-                <!-- Fecha peritación -->
+                <!-- Estado -->
                 <div class="small-2 cell">
-                    <label for="f_peritacion" class="text-right middle">Fecha Peritación</label>
+                    <label for="estado" class="text-right middle">Estado</label>
                 </div>
                 <div class="small-3 cell">
-                    <input id="f_peritacion" name="f_peritacion" type="date" value="<?= date("Y-m-d"); ?>" required>
+                    <select name="estadoId" id="estado" required>
+                        <option value="">--</option>
+                        <?
+                            use Peritacion\Peritacion;
+                            foreach ((new Peritacion())->getAllStates() as $i => $ste) {
+                                echo "<option value=${ste['id']}>${ste['nombre']}</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -54,22 +62,6 @@
                                 $id = $comp['id'];
                                 $name = $comp['nombre'];
                                 echo "<option value=$id>$name</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-
-                <!-- Estado -->
-                <div class="small-2 cell">
-                    <label for="estado" class="text-right middle">Estado</label>
-                </div>
-                <div class="small-3 cell">
-                    <select name="estadoId" id="estado" required>
-                        <option value="">--</option>
-                        <?
-                            use Peritacion\Peritacion;
-                            foreach ((new Peritacion())->getAllStates() as $i => $ste) {
-                                echo "<option value=${ste['id']}>${ste['nombre']}</option>";
                             }
                         ?>
                     </select>
