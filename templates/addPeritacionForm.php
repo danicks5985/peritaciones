@@ -22,38 +22,22 @@
                     <input id="matricula" name="matricula" type="text" autocomplete="off" required>
                 </div>
 
-                <!-- Estado -->
-                <div class="small-2 cell">
-                    <label for="estado" class="text-right middle">Estado</label>
-                </div>
-                <div class="small-3 cell">
-                    <select name="estadoId" id="estado" required>
-                        <option value="">--</option>
-                        <?
-                            use Peritacion\Peritacion;
-                            foreach ((new Peritacion())->getAllStates() as $i => $ste) {
-                                echo "<option value=${ste['id']}>${ste['nombre']}</option>";
-                            }
-                        ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="grid-x grid-padding-x">
                 <!-- Compañía -->
-                <div class="small-1 cell">
+                <div class="small-2 cell">
                     <label for="nameCompania" class="text-right middle">Compañía</label>
                 </div>
                 <div class="small-3 cell">
                     <input id="nameCompania" type="text" autocomplete="off" required>
                     <input id="companiaId" name="companiaId" type="hidden">
                 </div>
+            </div>
 
+            <div class="grid-x grid-padding-x">
                 <!-- Perito -->
                 <div class="small-1 cell">
                     <label for="perito" class="text-right middle">Perito</label>
                 </div>
-                <div class="small-2 cell">
+                <div class="small-3 cell">
                     <select name="peritoId" id="perito" required>
                         <option value="">--</option>
                         <?

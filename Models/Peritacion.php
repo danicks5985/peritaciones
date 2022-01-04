@@ -13,19 +13,15 @@
             $matr = strtoupper($peritacion['matricula']);
             $compan = strtoupper($peritacion['companiaId']);
             $per = strtoupper($peritacion['peritoId']);
-            $estadoId = $peritacion['estadoId'];
             $tot_perit = $this->getImporte($peritacion);
 
             $local = $this->getLocalidad($peritacion['tallerId']);
 
             $f_cier = 'NULL';
-            if ($estadoId == 2 || $estadoId == 3){
-                $f_cier = "'". date("Y-m-d") ."'";
-            }
 
             $sql = "INSERT INTO peritaciones (taller_id,matricula,f_peritacion,compania_id,perito_id,
                     estado_id,f_cierre,localidad,total_peritacion) 
-                    VALUES ($taller,'$matr',DATE(NOW()),$compan,$per,$estadoId,$f_cier,
+                    VALUES ($taller,'$matr',DATE(NOW()),$compan,$per,10,$f_cier,
                     '$local',$tot_perit)";
             $res = $this->query($sql);
             return $res;
