@@ -13,6 +13,9 @@
                 <div class="cell small-2 text-center concesionario_cell">
                     <label style="background: #b7d8b7;">CONCESIONARIO</label>
                 </div>
+                <div class="cell small-2 text-center multimarca_cell">
+                    <label style="background: #d8b7b7;">MULTIMARCA</label>
+                </div>
                 <div class="cell small-2 text-center concertado_cell">
                     <label style="background: #f1a02752;">CONCERTADO</label>
                 </div>
