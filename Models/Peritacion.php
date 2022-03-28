@@ -94,7 +94,7 @@
         public function getImporte($peritacion){
             $importe = 5;
             if ($peritacion["companiaId"] == 2){
-                if ($peritacion['peritoId'] == 1 || $peritacion['peritoId'] == 3 || $peritacion['peritoId'] == 4) {
+                if ($peritacion['peritoId'] == 3 || $peritacion['peritoId'] == 4) {
                     $importe = 3;
                 }
             }
