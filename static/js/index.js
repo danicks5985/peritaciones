@@ -337,6 +337,7 @@ $(function () {
             // Update footer by showing the total with the reference of the column index 
             $(api.column('importe_kms:name').footer()).html('Total');
             $(api.column('total_peritacion:name').footer()).html(Total);
+            $(api.column('acciones:name').footer()).html('(KIKE +250€)');
         },
         drawCallback: function (settings) {
 
