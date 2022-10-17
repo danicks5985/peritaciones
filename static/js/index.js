@@ -247,7 +247,18 @@ $(function () {
         order: [[0, "desc"]],
         columns: [
             { name: 'id', data: 'id', className: "tdRight", visible: false },
-            { name: 'nombre_taller', data: 'nombre_taller', className: "tdLeft" },
+            { 
+                name: 'nombre_taller', 
+                data: 'nombre_taller', 
+                className: "tdLeft", 
+                render: function (data, type, row, meta) {
+                    if (type === 'display'){
+                        
+                        return data + ` (${row.taller_id})`;
+                    }
+                    return data;
+                } 
+            },
             { name: 'matricula', data: 'matricula', className: "tdLeft" },
             {
                 name: 'f_peritacion',
