@@ -23,6 +23,16 @@
                 <fieldset class="cell text-center callout" style="margin-top: 25px;">
                     <legend><strong><i class="far fa-edit"></i> Modificar peritación</strong></legend>
 
+                    <div class="grid-x grid-padding-x">
+                        <!-- Código taller -->
+                        <div class="small-2 cell">
+                            <label for="nameTaller" class="text-right middle">Código Taller</label>
+                        </div>
+                        <div class="small-10 cell text-left" style="padding-top: 8px;">
+                            <strong><label id="codTaller_cell" style="font-weight: inherit;"></label></strong>
+                        </div>
+                    </div>
+
 
                     <div class="grid-x grid-padding-x">
                         <!-- taller -->
