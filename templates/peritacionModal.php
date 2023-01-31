@@ -29,7 +29,7 @@
                             <label for="nameTaller" class="text-right middle">Código Taller</label>
                         </div>
                         <div class="small-10 cell text-left" style="padding-top: 8px;">
-                            <strong><label id="codTaller_cell" style="font-weight: inherit;"></label></strong>
+                            <strong><label id="codTaller_cell" style="font-weight: inherit; color: #269d26;"></label></strong>
                         </div>
                     </div>
 
