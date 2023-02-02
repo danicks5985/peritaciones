@@ -67,10 +67,10 @@
             $sql = "SELECT p.*, c.nombre AS nombre_compania , t.nombre AS nombre_taller, 
                     pe.nombre as nombre_perito, e.nombre as estado
                     FROM peritaciones p
-                    INNER JOIN peritos pe ON p.perito_id = pe.id
-                    INNER JOIN companias c ON p.compania_id = c.id
-                    INNER JOIN talleres t ON p.taller_id = t.id
-                    INNER JOIN estados e ON p.estado_id = e.id
+                    LEFT JOIN peritos pe ON p.perito_id = pe.id
+                    LEFT JOIN companias c ON p.compania_id = c.id
+                    LEFT JOIN talleres t ON p.taller_id = t.id
+                    LEFT JOIN estados e ON p.estado_id = e.id
                     ORDER BY p.id DESC";
             $res = $this->query($sql);
             $peritaciones = $res->fetch_all(MYSQLI_ASSOC);
@@ -81,9 +81,9 @@
         public function getPeritacion($id){
             $sql = "SELECT p.*, c.nombre AS nombre_compania , t.nombre AS nombre_taller, e.nombre as estado
                     FROM peritaciones p
-                    INNER JOIN companias c ON p.compania_id = c.id
-                    INNER JOIN talleres t ON p.taller_id = t.id
-                    INNER JOIN estados e ON p.estado_id = e.id
+                    LEFT JOIN companias c ON p.compania_id = c.id
+                    LEFT JOIN talleres t ON p.taller_id = t.id
+                    LEFT JOIN estados e ON p.estado_id = e.id
                     WHERE p.id=$id";
             $res = $this->query($sql);
             $row = $res->fetch_assoc();
