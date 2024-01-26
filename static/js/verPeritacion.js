@@ -131,8 +131,9 @@ $("#savePeritacionForm").submit(function(e) {
     });
 });
 
+// Poner la fecha actual a la fecha de cierre según el estado.
 $("#verPeritacionModal #estadoId").change(function(){
-    if ($(this).val() == '2' || $(this).val() == '3'){
+    if ($(this).val() == '2' || $(this).val() == '3' || $(this).val() == '12' || $(this).val() == '13' || $(this).val() == '14'){
         $("#verPeritacionModal #f_cierre").val(new Date().toISOString().slice(0, 10));
     }
 });
