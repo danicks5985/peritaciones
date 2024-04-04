@@ -158,7 +158,7 @@ $(function () {
     var columns_export = [ 
         'nombre_taller:name', 'matricula:name', 'f_peritacion:name',
         'nombre_compania:name', 'nombre_perito:name', 'estado:name',
-        'total_peritacion:name'
+        'importe_kms:name','total_peritacion:name'
     ]
 
     dataTablePeritaciones = $('#tbPeritaciones').DataTable({
@@ -338,16 +338,22 @@ $(function () {
             };
 
             // computing column Total of the complete result 
-            var Total = api
+            var importeTotal = api
                 .column('total_peritacion:name', { page: 'current' })
                 .data()
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0);
 
-            // Update footer by showing the total with the reference of the column index 
-            $(api.column('importe_kms:name').footer()).html('Total');
-            $(api.column('total_peritacion:name').footer()).html(Total);
+            // Obteniendo el total de registros filtrados en la tabla
+            // Obteniendo el total de registros filtrados
+            var info = api.page.info();
+            var totalRegistrosFiltrados = info.recordsDisplay;
+
+            // Update footer by showing the total with the reference of the column index
+            $(api.column('importe_kms:name').footer()).html('Total peritaciones: ' + totalRegistrosFiltrados);
+            // $(api.column('importe_kms:name').footer()).html('Importe total');
+            $(api.column('total_peritacion:name').footer()).html('Importe total: ' + importeTotal + '€');
             $(api.column('acciones:name').footer()).html('(KIKE +250€)');
         },
         drawCallback: function (settings) {
